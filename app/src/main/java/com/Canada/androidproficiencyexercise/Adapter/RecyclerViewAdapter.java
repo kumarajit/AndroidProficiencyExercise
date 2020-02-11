@@ -11,8 +11,6 @@ import android.widget.TextView;
 
 import com.Canada.androidproficiencyexercise.R;
 import com.Canada.androidproficiencyexercise.Model.Canada;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -42,10 +40,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
        // Canada.RowsEntity rowsEntity= (Canada.RowsEntity) data.get(position).getRows();
         holder.textViewUsername.setText(data.get(position).getTitle());
         holder.textViewAddress.setText(data.get(position).getDescription());
-      //  holder.imgView.setText(data.get(position).getTitle());
-        RequestOptions myOptions = new RequestOptions()
-                .fitCenter() // or centerCrop
-                .override(400, holder.textViewAddress.getHeight());
+
         if (TextUtils.isEmpty(data.get(position).getImagehref()) || data.get(position).getImagehref()==null ||
                 data.get(position).getImagehref().equalsIgnoreCase("null")){
             holder.imgView.setVisibility(View.GONE);
