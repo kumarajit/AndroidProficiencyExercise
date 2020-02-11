@@ -91,13 +91,15 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
     @Override
     public void showData(Canada data) {
-
-
-
+        
         List<Canada.RowsEntity> canadas=data.getRows();
 
         recyclerViewAdapter.setData(canadas, this);
         swipeContainer.setRefreshing(false);
+
+        if(getSupportActionBar() !=null) {
+            getSupportActionBar().setTitle(data.getTitle().toString());
+        }
 
     }
 
