@@ -13,6 +13,7 @@ import com.Canada.androidproficiencyexercise.R;
 import com.Canada.androidproficiencyexercise.Model.Canada;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private List<Canada.RowsEntity> data;
     private RecyclerViewAdapter.ClickListener clickListener;
-    Context context;
+    private Context context;
     @Inject
     public RecyclerViewAdapter(ClickListener clickListener) {
         this.clickListener = clickListener;
@@ -51,9 +52,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
         else {
             holder.imgView.setVisibility(View.VISIBLE);
-            Glide.with(context)
-                    .load(data.get(position).getImagehref())
+            String imgurl=data.get(position).getImagehref().replaceAll("http","https");
+            holder.imgView.setVisibility(View.VISIBLE);
+           /* Glide.with(context)
+                    .load(imgurl)
                     .apply(myOptions)
+                    .into(holder.imgView);*/
+            Picasso
+                    .with(context)
+                    .load(imgurl)
                     .into(holder.imgView);
         }
 
